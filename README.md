@@ -13,6 +13,16 @@ Please contact the lecturer **Mark Zolotas** about any questions concering the r
 
 ## Getting Started
 
+You can "clone" this Git repository into your workspace, by running the following command:
+```
+git clone https://github.com/mazrk7/EECE5644_IntroMLPR_LectureCode_Summer1.git
+```
+If you wish to "pull" any updates I make to this repository over time, run:
+```
+git pull origin main
+```
+Look through this [Git Basics](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) if you would like further guidance.
+
 I make use of Jupyter Notebooks for many of the in-class demonstrations. This is basically a Python web interface that allows me to combine written formulas/notes with code and run it in a sequential fashion. My environment is set up using [Anaconda](https://www.anaconda.com/), which I highly recommend for hosting applications like Jupyter within your Python [environment](https://docs.python.org/3/library/venv.html#:~:text=A%20virtual%20environment%20is%20a,part%20of%20your%20operating%20system.).
 
 Ofcourse, you can also look through the Notebooks without running the code. Or you can directly import the code aspects into whatever Python IDE is of your preference. I usually recommend these two:
@@ -24,4 +34,8 @@ Both are great so take your pick!
 Lastly, my Python environment can be installed directly using `pip` as follows:
 ```
 pip install -r requirements.txt
+```
+Or by creating a Conda environment from my provided `yaml` file:
+```
+conda env create -f environment.yaml
 ```
