@@ -4,7 +4,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Suppress scientific notation
+
 np.set_printoptions(suppress=True)
+
+# If you used the scikit-learn dimensionality reduction models
+# from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+# from sklearn.decomposition import PCA
+
 
 from modules import data_utils
 
@@ -89,7 +95,7 @@ def perform_lda(X, labels, C=2, plot_vec=True):
         X: Real-valued matrix of samples with shape [N, n], N for sample count and n for dimensionality.
         labels: Class labels per sample received as an [N, 1] column.
         C: Number classes, explicitly clarifying that we're doing binary classification here.
-        plot_vec: If you want the option of directly plotting the linear projection vector.
+        plot_vec: If you want the option of directly plotting the linear projection vector over your input space.
 
     Returns:
         w: Fisher's LDA project vector, shape [n, 1].
@@ -117,6 +123,12 @@ def perform_lda(X, labels, C=2, plot_vec=True):
     # Scalar LDA projections in matrix form
     z = X.dot(w)
 
+    # If using sklearn instead:
+    # lda = LinearDiscriminantAnalysis()
+    # X_fit = lda.fit(X, labels)  # Is a fitted estimator, not actual data to project
+    # z = lda.transform(X)
+    # w = X_fit.coef_[0]
+
     if plot_vec:
         # All the variables we need to get set for plotting
         mid_point = (mu[0] + mu[1]) / 2
@@ -143,3 +155,41 @@ def perform_lda(X, labels, C=2, plot_vec=True):
         plt.show()
 
     return w, z
+
+
+def perform_pca(X):
+    """  Principal Component Analysis (PCA) on real-valued vector data.
+
+    Args:
+        X: Real-valued matrix of samples with shape [N, n], N for sample count and n for dimensionality.
+
+    Returns:
+        U: An orthogonal matrix [n, n] that contains the PCA projection vectors, ordered from first to last.
+        D: A diagonal matrix [n, n] that contains the variance of each PC corresponding to the projection vectors.
+        Z: PC projection matrix of the zero-mean input samples, shape [N, n].
+    """
+
+    # First derive sample-based estimates of mean vector and covariance matrix:
+    mu = np.mean(X, axis=0)
+    sigma = np.cov(X.T)
+
+    # Mean-subtraction is a necessary assumption for PCA, so perform this to obtain zero-mean sample set
+    C = X - mu
+
+    # Get the eigenvectors (in U) and eigenvalues (in D) of the estimated covariance matrix
+    lambdas, U = np.linalg.eig(sigma)
+    # Get the indices from sorting lambdas in order of increasing value, with ::-1 slicing to then reverse order
+    idx = lambdas.argsort()[::-1]
+    # Extract corresponding sorted eigenvectors and eigenvalues
+    U = U[:, idx]
+    D = np.diag(lambdas[idx])
+
+    # PC projections of zero-mean samples, U^Tx (x mean-centred), matrix over N is XU
+    Z = C.dot(U)
+
+    # If using sklearn instead:
+    # pca = PCA(n_components=X.shape[1])  # n_components is how many PCs we'll keep... let's take all of them
+    # X_fit = pca.fit(X)  # Is a fitted estimator, not actual data to project
+    # Z = pca.transform(X)
+
+    return U, D, Z
