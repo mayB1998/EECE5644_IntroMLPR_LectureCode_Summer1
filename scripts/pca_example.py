@@ -72,7 +72,7 @@ def main():
     plt.scatter(Z_GMM[:, 0], Z_GMM[:, 1])
     plt.xlabel("z1")
     plt.ylabel("z2")
-    plt.title("PCA projections of to {}D GMM 2D space".format(n))
+    plt.title("PCA projections of {}D GMM to 2D space".format(n))
     plt.show()
 
     # ========== PCA applied to data from a Uniform Mixture PDF ==========
@@ -126,7 +126,7 @@ def main():
     plt.scatter(Z_UMM[:, 0], Z_UMM[:, 1])
     plt.xlabel("z1")
     plt.ylabel("z2")
-    plt.title("PCA projections of to {}D UMM 2D space".format(n))
+    plt.title("PCA projections of {}D UMM to 2D space".format(n))
     plt.show()
 
 
