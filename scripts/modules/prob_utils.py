@@ -66,8 +66,8 @@ class UniformMixturePDFParameters(PDFParameters):
         Args:
             priors: Prior likelihoods of each distribution being selected.
             C: Number of mixture components.
-            a: Each uniform component's n-dim lower endpoints n-dim, shape [C, n].
-            b: Each uniform component's n-dim higher endpoints n-dim, shape [C, n].
+            a: Each uniform component's n-dim lower endpoints n-dim, shape [n, C].
+            b: Each uniform component's n-dim higher endpoints n-dim, shape [n, C].
         """
 
         super().__init__('UniformMixture')
@@ -88,7 +88,7 @@ class GaussianMixturePDFParameters(PDFParameters):
         Args:
             priors: Prior likelihoods of each distribution being selected.
             C: Number of mixture components.
-            mean: Each Gaussian's mean vector, of shape [C, n] for n-dimensionality.
+            mean: Each Gaussian's mean vector, of shape [n, C] for n-dimensionality.
             cov: Each Gaussian's covariance matrix, of shape [n, n, C] for n-dimensionality. Note for n = 1,
                 simply variance so shape [1, C].
         """
