@@ -39,3 +39,6 @@ Or by creating a Conda environment from my provided `yaml` file:
 ```
 conda env create -f environment.yaml
 ```
+
+Setting up interactive plots in jupyter
+`ipympl` enables the interactive features of matplotlib in the Jupyter notebook. Instructions are in its [official repo](https://github.com/matplotlib/ipympl).
