@@ -12,7 +12,7 @@ np.set_printoptions(suppress=True)
 # from sklearn.decomposition import PCA
 
 
-from modules import data_utils
+from scripts.modules import data_utils
 
 
 def analytical_ls_solution(X, y):
