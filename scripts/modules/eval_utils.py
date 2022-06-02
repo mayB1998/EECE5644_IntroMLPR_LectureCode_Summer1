@@ -42,16 +42,16 @@ def get_binary_classification_metrics(predictions, labels):
     # (true negative, false positive, false negative, true positive)
 
     # True Negative Probability Rate
-    ind_00_map = np.argwhere((predictions == 0) & (labels == 0))
-    tnr = len(ind_00_map) / N_labels[0]
+    ind_00 = np.argwhere((predictions == 0) & (labels == 0))
+    tnr = len(ind_00) / N_labels[0]
     # False Positive Probability Rate
-    ind_10_map = np.argwhere((predictions == 1) & (labels == 0))
-    fpr = len(ind_10_map) / N_labels[0]
+    ind_10 = np.argwhere((predictions == 1) & (labels == 0))
+    fpr = len(ind_10) / N_labels[0]
     # False Negative Probability Rate
-    ind_01_map = np.argwhere((predictions == 0) & (labels == 1))
-    fnr = len(ind_01_map) / N_labels[1]
+    ind_01 = np.argwhere((predictions == 0) & (labels == 1))
+    fnr = len(ind_01) / N_labels[1]
     # True Positive Probability Rate
-    ind_11_map = np.argwhere((predictions == 1) & (labels == 1))
-    tpr = len(ind_11_map) / N_labels[1]
+    ind_11 = np.argwhere((predictions == 1) & (labels == 1))
+    tpr = len(ind_11) / N_labels[1]
 
     return tnr, fpr, fnr, tpr

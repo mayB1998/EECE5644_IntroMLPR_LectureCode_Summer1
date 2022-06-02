@@ -1,5 +1,5 @@
 """Example of applying LDA to data generated using Gaussian and uniform distributions with different dimensions.
-   PDF parameters selected first and then data is generated from a mixture of PDFs. Projection vectors are later
+   PDF parameters selected first and then data is generated from the multivariate PDFs. Projection vectors are later
    generated via LDA over the data, before plotting projection results.
 """
 
