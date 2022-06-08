@@ -10,8 +10,8 @@ def hw2q2():
     xTrain = data[:, 0:2]
     yTrain = data[:, 2]
 
-    Ntrain = 1000
-    data = generateData(Ntrain)
+    Nvalid = 1000
+    data = generateData(Nvalid)
     plot3(data[:, 0], data[:, 1], data[:, 2], name="Validation")
     xValidate = data[:, 0:2]
     yValidate = data[:, 2]
