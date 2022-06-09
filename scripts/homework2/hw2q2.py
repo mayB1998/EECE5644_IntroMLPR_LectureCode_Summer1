@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 
 import numpy as np
 
+np.random.seed(7)
+
 
 def hw2q2():
     Ntrain = 100
